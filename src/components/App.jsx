@@ -1,32 +1,62 @@
-import { Route, Routes } from 'react-router-dom';
-import Home from 'pages/Home';
-import Movies from 'pages/Movies';
-import MovieDetails from 'pages/MovieDetails';
-import Layout from './Layout';
-import Cast from './Cast';
-import Reviews from './Reviews';
+import { lazy } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+const Home = lazy(() =>
+  import('../pages/Home/Home').then(module => ({
+    ...module,
+    default: module.Home,
+  }))
+);
+
+const MovieDetails = lazy(() =>
+  import('../pages/MovieDetails/MovieDetails').then(module => ({
+    ...module,
+    default: module.MovieDetails,
+  }))
+);
+
+const Movies = lazy(() =>
+  import('../pages/Movies/Movies').then(module => ({
+    ...module,
+    default: module.Movies,
+  }))
+);
+
+const Cast = lazy(() =>
+  import('../components/Cast/Cast').then(module => ({
+    ...module,
+    default: module.Cast,
+  }))
+);
+
+const Reviews = lazy(() =>
+  import('../components/Reviews/Reviews').then(module => ({
+    ...module,
+    default: module.Reviews,
+  }))
+);
+
+const SharedLayout = lazy(() =>
+  import('../components/SharedLayout/SharedLayout').then(module => ({
+    ...module,
+    default: module.SharedLayout,
+  }))
+);
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
-      </Routes>
-    </div>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 };
+
 export default App;
-//! 3c17396434cbeb8bf43dc0291bcf9df1
-//todo Токен доступу для читання API
-// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYzE3Mzk2NDM0Y2JlYjhiZjQzZGMwMjkxYmNmOWRmMSIsInN1YiI6IjY1MjliYTdhMzU4ZGE3MDBjNmYwN2NiOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6w33BtFWAIXbReKDK6fmS2SPFDSsJcXJ0jSJcixVsL0

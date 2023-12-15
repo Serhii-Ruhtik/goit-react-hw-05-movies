@@ -26,7 +26,7 @@ import {
 
 const MoviesAPI = new SearchMoviesAPI();
 
-export function MovieDetails() {
+const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
@@ -104,4 +104,5 @@ export function MovieDetails() {
       )}
     </>
   );
-}
+};
+export default MovieDetails;

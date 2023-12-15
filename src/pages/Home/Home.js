@@ -7,7 +7,7 @@ import { TrendingHeading } from './Home.styled';
 
 const MoviesAPI = new SearchMoviesAPI();
 
-export function Home() {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [page, setPage] = useState(1);
@@ -56,4 +56,5 @@ export function Home() {
       {page === totalPages && <Finish />}
     </>
   );
-}
+};
+export default Home;
