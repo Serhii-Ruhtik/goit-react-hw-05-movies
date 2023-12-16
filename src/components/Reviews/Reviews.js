@@ -6,7 +6,7 @@ import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 
 const MoviesAPI = new SearchMoviesAPI();
 
-export function Reviews() {
+const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
@@ -31,4 +31,5 @@ export function Reviews() {
       )}
     </Fragment>
   );
-}
+};
+export default Reviews;

@@ -6,7 +6,7 @@ import { SearchMoviesAPI } from 'components/services/API';
 
 const MoviesAPI = new SearchMoviesAPI();
 
-export function Cast() {
+const Cast = () => {
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
 
@@ -29,4 +29,5 @@ export function Cast() {
       )}
     </Fragment>
   );
-}
+};
+export default Cast;

@@ -17,7 +17,6 @@ const Movies = () => {
   const [isRendered, setIsRendered] = useState(false);
   const [searchQuery, setSearchQuery] = useSearchParams();
   const filmTitle = searchQuery.get('name') ?? '';
-  const from = 'movies';
 
   useEffect(() => {
     MoviesAPI.searchGenres().then(response => setGenres(response.data.genres));
@@ -80,7 +79,7 @@ const Movies = () => {
       <SearchBox value={filmTitle} onSubmit={submitHandler} />
       {movies.length !== 0 && (
         <div>
-          <MoviesList movies={movies} genres={genres} from={from} />
+          <MoviesList movies={movies} genres={genres} />
         </div>
       )}
       {page === totalPages && <Finish />}

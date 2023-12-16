@@ -13,7 +13,6 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const [isRendered, setIsRendered] = useState(false);
-  const from = 'home';
 
   useEffect(() => {
     MoviesAPI.searchGenres().then(response => {
@@ -50,9 +49,7 @@ const Home = () => {
   return (
     <>
       <TrendingHeading>Trending today</TrendingHeading>
-      {movies.length !== 0 && (
-        <MoviesList movies={movies} genres={genres} from={from} />
-      )}
+      {movies.length !== 0 && <MoviesList movies={movies} genres={genres} />}
       {page === totalPages && <Finish />}
     </>
   );
