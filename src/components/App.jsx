@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Loader } from './Loader/Loader';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Movies = lazy(() => import('../pages/Movies/Movies'));
@@ -13,7 +12,7 @@ const SharedLayout = lazy(() =>
 
 const App = () => {
   return (
-    <Suspense fallback={<div>{<Loader />}</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
