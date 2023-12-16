@@ -9,7 +9,7 @@ import { Loader } from 'components/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 import { AppContainer, Section, Header } from './SharedLayout.styled';
 
-export function SharedLayout() {
+const SharedLayout = () => {
   return (
     <>
       <AppContainer>
@@ -26,4 +26,5 @@ export function SharedLayout() {
       </AppContainer>
     </>
   );
-}
+};
+export default SharedLayout;

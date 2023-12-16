@@ -1,46 +1,13 @@
 import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-const Home = lazy(() =>
-  import('../pages/Home/Home').then(module => ({
-    ...module,
-    default: module.Home,
-  }))
-);
-
-const MovieDetails = lazy(() =>
-  import('../pages/MovieDetails/MovieDetails').then(module => ({
-    ...module,
-    default: module.MovieDetails,
-  }))
-);
-
-const Movies = lazy(() =>
-  import('../pages/Movies/Movies').then(module => ({
-    ...module,
-    default: module.Movies,
-  }))
-);
-
-const Cast = lazy(() =>
-  import('../components/Cast/Cast').then(module => ({
-    ...module,
-    default: module.Cast,
-  }))
-);
-
-const Reviews = lazy(() =>
-  import('../components/Reviews/Reviews').then(module => ({
-    ...module,
-    default: module.Reviews,
-  }))
-);
-
+const Home = lazy(() => import('../pages/Home/Home'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 const SharedLayout = lazy(() =>
-  import('../components/SharedLayout/SharedLayout').then(module => ({
-    ...module,
-    default: module.SharedLayout,
-  }))
+  import('../components/SharedLayout/SharedLayout')
 );
 
 const App = () => {

@@ -9,7 +9,7 @@ import { Finish } from 'components/Finish/Finish';
 
 const MoviesAPI = new SearchMoviesAPI();
 
-export function Movies() {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [page, setPage] = useState(1);
@@ -86,4 +86,5 @@ export function Movies() {
       {page === totalPages && <Finish />}
     </div>
   );
-}
+};
+export default Movies;
